@@ -4,19 +4,23 @@ jobs:
   a:
     runs-on: ubuntu-20.04
     steps:
-      - run: bash -c 'for i in 1 2 3; do echo "a: $i"; sleep 1; done'
+      - run: |
+        bash -c 'for i in 1 2 3; do echo "a: $i"; sleep 1; done'
   b1:
     needs: a
     runs-on: ubuntu-20.04
     steps:
-      - run: bash -c 'for i in 1 2 3; do echo "b1: $i"; sleep 1; done'
+      - run: |
+        bash -c 'for i in 1 2 3; do echo "b1: $i"; sleep 1; done'
   b2:
     needs: a
     runs-on: ubuntu-20.04
     steps:
-      - run: bash -c 'for i in 1 2 3; do echo "b2: $i"; sleep 1; done'
+      - run: |
+        bash -c 'for i in 1 2 3; do echo "b2: $i"; sleep 1; done'
   c:
     needs: [ b1, b2 ]
     runs-on: ubuntu-20.04
     steps:
-      - run: bash -c 'for i in 1 2 3; do echo "c: $i"; sleep 1; done'
+      - run: |
+        bash -c 'for i in 1 2 3; do echo "c: $i"; sleep 1; done'
