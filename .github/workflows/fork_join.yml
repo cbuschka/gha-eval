@@ -9,7 +9,14 @@ jobs:
 
       - name: step a
         run: |
-          for i in 1 2 3; do echo "a: $i"; sleep 1; done
+          (for i in 1 2 3; do echo "a: $i"; sleep 1; done) | tee a.out
+
+      - name: upload a.out
+        uses: actions/upload-artifact@master
+        with:
+          name: a.out
+          path: ./a.out
+
   b1:
     needs: a
     runs-on: ubuntu-20.04
@@ -19,7 +26,14 @@ jobs:
 
       - name: step b1
         run: |
-          for i in 1 2 3; do echo "b1: $i"; sleep 1; done
+          (for i in 1 2 3; do echo "b1: $i"; sleep 1; done) | tee b1.out
+
+      - name: upload b1.out
+        uses: actions/upload-artifact@master
+        with:
+          name: b1.out
+          path: ./b1.out
+
   b2:
     needs: a
     runs-on: ubuntu-20.04
@@ -29,7 +43,14 @@ jobs:
 
       - name: step b2
         run: |
-          for i in 1 2 3; do echo "b2: $i"; sleep 1; done
+          (for i in 1 2 3; do echo "b2: $i"; sleep 1; done) | tee b2.out
+
+      - name: upload b2.out
+        uses: actions/upload-artifact@master
+        with:
+          name: b2.out
+          path: ./b2.out
+
   c:
     needs: [ b1, b2 ]
     runs-on: ubuntu-20.04
@@ -39,4 +60,45 @@ jobs:
 
       - name: step c
         run: |
-         for i in 1 2 3; do echo "c: $i"; sleep 1; done
+         (for i in 1 2 3; do echo "c: $i"; sleep 1; done) | tee c.out
+
+      - name: upload c.out
+        uses: actions/upload-artifact@master
+        with:
+          name: c.out
+          path: ./c.out
+
+  d:
+    needs: c
+    runs-on: ubuntu-20.04
+    steps:
+      - name: checkout d
+        uses: actions/checkout@v1
+
+      - name: download a.out
+        uses: actions/upload-artifact@master
+        with:
+          name: a.out
+          path: ./a.out
+
+      - name: download b1.out
+        uses: actions/upload-artifact@master
+        with:
+          name: b1.out
+          path: ./b1.out
+
+      - name: download b2.out
+        uses: actions/upload-artifact@master
+        with:
+          name: b2.out
+          path: ./b2.out
+
+      - name: download c.out
+        uses: actions/upload-artifact@master
+        with:
+          name: c.out
+          path: ./c.out
+
+      - name: print results
+        run: |
+          for f in a.out b1.out b2.out c.out; do echo -e "\n $f:"; cat $f; done
