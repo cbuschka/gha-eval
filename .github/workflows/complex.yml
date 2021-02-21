@@ -4,23 +4,27 @@ jobs:
   a:
     runs-on: ubuntu-20.04
     steps:
-      - run: |
-        for i in 1 2 3; do echo "a: $i"; sleep 1; done
+      - name: step a
+        run: |
+          for i in 1 2 3; do echo "a: $i"; sleep 1; done
   b1:
     needs: a
     runs-on: ubuntu-20.04
     steps:
-      - run: |
-        for i in 1 2 3; do echo "b1: $i"; sleep 1; done
+      - name: step b1
+        run: |
+          for i in 1 2 3; do echo "b1: $i"; sleep 1; done
   b2:
     needs: a
     runs-on: ubuntu-20.04
     steps:
-      - run: |
-        for i in 1 2 3; do echo "b2: $i"; sleep 1; done
+      - name: step b2
+        run: |
+          for i in 1 2 3; do echo "b2: $i"; sleep 1; done
   c:
     needs: [ b1, b2 ]
     runs-on: ubuntu-20.04
     steps:
-      - run: |
-        for i in 1 2 3; do echo "c: $i"; sleep 1; done
+      - name: step c
+        run: |
+         for i in 1 2 3; do echo "c: $i"; sleep 1; done
