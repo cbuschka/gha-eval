@@ -79,25 +79,25 @@ jobs:
         uses: actions/download-artifact@master
         with:
           name: a.out
-          path: ./a.out
+          path: ./
 
       - name: download b1.out
         uses: actions/download-artifact@master
         with:
           name: b1.out
-          path: ./b1.out
+          path: ./
 
       - name: download b2.out
         uses: actions/download-artifact@master
         with:
           name: b2.out
-          path: ./b2.out
+          path: ./
 
       - name: download c.out
         uses: actions/download-artifact@master
         with:
           name: c.out
-          path: ./c.out
+          path: ./
 
       - name: print results
         run: |
