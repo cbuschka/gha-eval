@@ -1,4 +1,4 @@
-name: complex
+name: fork_join
 on: [push, pull_request, workflow_dispatch]
 jobs:
   a:
