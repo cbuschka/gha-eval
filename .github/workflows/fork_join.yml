@@ -102,3 +102,12 @@ jobs:
       - name: print results
         run: |
           for f in a.out b1.out b2.out c.out; do echo -e "\n $f:"; cat $f; done
+
+      - name: delete artifacts
+        uses: geekyeggo/delete-artifact@v1
+        with:
+          name: |
+            a.out
+            b1.out
+            b2.out
+            c.out
