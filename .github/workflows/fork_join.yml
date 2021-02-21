@@ -9,7 +9,7 @@ jobs:
 
       - name: step a
         run: |
-          (for i in 1 2 3; do echo "a: $i"; sleep 1; done) | tee a.out
+          (echo "$(date): a") | tee a.out
 
       - name: upload a.out
         uses: actions/upload-artifact@master
@@ -26,7 +26,7 @@ jobs:
 
       - name: step b1
         run: |
-          (for i in 1 2 3; do echo "b1: $i"; sleep 1; done) | tee b1.out
+          (echo "$(date): b1") | tee b1.out
 
       - name: upload b1.out
         uses: actions/upload-artifact@master
@@ -43,7 +43,7 @@ jobs:
 
       - name: step b2
         run: |
-          (for i in 1 2 3; do echo "b2: $i"; sleep 1; done) | tee b2.out
+          (echo "$(date): b2") | tee b2.out
 
       - name: upload b2.out
         uses: actions/upload-artifact@master
@@ -60,7 +60,7 @@ jobs:
 
       - name: step c
         run: |
-         (for i in 1 2 3; do echo "c: $i"; sleep 1; done) | tee c.out
+          (echo "$(date): c") | tee c.out
 
       - name: upload c.out
         uses: actions/upload-artifact@master
