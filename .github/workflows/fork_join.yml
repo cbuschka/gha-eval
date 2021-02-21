@@ -4,6 +4,9 @@ jobs:
   a:
     runs-on: ubuntu-20.04
     steps:
+      - name: checkout a
+        uses: actions/checkout@v1
+
       - name: step a
         run: |
           for i in 1 2 3; do echo "a: $i"; sleep 1; done
@@ -11,6 +14,9 @@ jobs:
     needs: a
     runs-on: ubuntu-20.04
     steps:
+      - name: checkout b1
+        uses: actions/checkout@v1
+
       - name: step b1
         run: |
           for i in 1 2 3; do echo "b1: $i"; sleep 1; done
@@ -18,6 +24,9 @@ jobs:
     needs: a
     runs-on: ubuntu-20.04
     steps:
+      - name: checkout b2
+        uses: actions/checkout@v1
+
       - name: step b2
         run: |
           for i in 1 2 3; do echo "b2: $i"; sleep 1; done
@@ -25,6 +34,9 @@ jobs:
     needs: [ b1, b2 ]
     runs-on: ubuntu-20.04
     steps:
+      - name: checkout c
+        uses: actions/checkout@v1
+
       - name: step c
         run: |
          for i in 1 2 3; do echo "c: $i"; sleep 1; done
