@@ -76,25 +76,25 @@ jobs:
         uses: actions/checkout@v1
 
       - name: download a.out
-        uses: actions/upload-artifact@master
+        uses: actions/download-artifact@master
         with:
           name: a.out
           path: ./a.out
 
       - name: download b1.out
-        uses: actions/upload-artifact@master
+        uses: actions/download-artifact@master
         with:
           name: b1.out
           path: ./b1.out
 
       - name: download b2.out
-        uses: actions/upload-artifact@master
+        uses: actions/download-artifact@master
         with:
           name: b2.out
           path: ./b2.out
 
       - name: download c.out
-        uses: actions/upload-artifact@master
+        uses: actions/download-artifact@master
         with:
           name: c.out
           path: ./c.out
