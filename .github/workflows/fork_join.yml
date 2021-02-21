@@ -75,28 +75,14 @@ jobs:
       - name: checkout d
         uses: actions/checkout@v1
 
-      - name: download a.out
+      - name: download a.out, b1.out, b2.out, c.out
         uses: actions/download-artifact@master
         with:
-          name: a.out
-          path: ./
-
-      - name: download b1.out
-        uses: actions/download-artifact@master
-        with:
-          name: b1.out
-          path: ./
-
-      - name: download b2.out
-        uses: actions/download-artifact@master
-        with:
-          name: b2.out
-          path: ./
-
-      - name: download c.out
-        uses: actions/download-artifact@master
-        with:
-          name: c.out
+          name: |
+            a.out
+            b1.out
+            b2.out
+            c.out
           path: ./
 
       - name: print results
